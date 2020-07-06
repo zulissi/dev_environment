@@ -15,4 +15,4 @@ RUN useradd -rm  -d /home/zulissi -s /bin/bash -g root -G sudo -u 1001 zulissi
 RUN echo 'zulissi:zulissi' | chpasswd
 
 EXPOSE 22
-CMD ["sudo","/usr/sbin/sshd", "-D"]
+CMD ["/usr/sbin/sshd", "-D"]
