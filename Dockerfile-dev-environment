@@ -12,8 +12,7 @@ ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 
 RUN useradd -rm  -d /home/zulissi -s /bin/bash -g root -G sudo -u 1001 zulissi
-USER zulissi
-WORKDIR /home/zulissi
+RUN echo 'zulissi:zulissi' | chpasswd
 
 EXPOSE 22
-CMD ["/usr/sbin/sshd", "-D"]
+CMD ["sudo","/usr/sbin/sshd", "-D"]
