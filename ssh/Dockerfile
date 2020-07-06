@@ -1,6 +1,7 @@
 FROM ubuntu:20.04
 
-RUN apt-get update && apt-get install -y openssh-server nano
+RUN apt-get update && apt-get install -y openssh-server 
+RUN apt-get install -y nano git vim
 
 RUN mkdir /var/run/sshd
 RUN sed -i "s/.*PasswordAuthentication.*/PasswordAuthentication no/g" /etc/ssh/sshd_config
