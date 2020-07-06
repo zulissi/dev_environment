@@ -14,7 +14,7 @@ ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 
 RUN useradd -rm  -d /home/$USERNAME -s /bin/bash -g root -G sudo -u 1001 $USERNAME
-RUN echo '$USERNAME:$USERNAME' | chpasswd
+RUN echo $USERNAME:$USERNAME | chpasswd
 ADD authorized_keys /home/$USERNAME/authorized_keys
 
 EXPOSE 22
