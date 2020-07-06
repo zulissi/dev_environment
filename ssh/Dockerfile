@@ -14,6 +14,7 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 
 RUN useradd -rm  -d /home/zulissi -s /bin/bash -g root -G sudo -u 1001 zulissi
 RUN echo 'zulissi:zulissi' | chpasswd
+ADD authorized_keys /home/zulissi/authorized_keys
 
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
