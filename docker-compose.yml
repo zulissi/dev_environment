@@ -3,7 +3,7 @@ services:
   ssh: 
     image: zulissi/dev_ssh
     build:
-      context ./ssh
+      context: ./ssh
     deploy: 
       placement: 
         constraints: 
@@ -22,7 +22,7 @@ services:
   jupyter: 
     image: zulissi/gpu_jupyter_environment
     build:
-      context ./gpu_jupyter
+      context: ./gpu_jupyter
     deploy: 
       placement: 
         constraints: 
