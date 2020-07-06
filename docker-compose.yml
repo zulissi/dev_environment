@@ -34,6 +34,11 @@ services:
         published: 9888 # pick your jupyter port
         protocol: tcp
         mode: host
+     environment:
+      - OMP_NUM_THREADS=1
+        NUMEXPR_NUM_THREADS=1
+        MKL_DEBUG_CPU_TYPE=5
+        JUPYTER_ENABLE_LAB=yes
 
 volumes:
   zulissi-home:
