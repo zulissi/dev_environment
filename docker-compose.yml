@@ -1,7 +1,7 @@
 version: '3.7' 
 services: 
   ssh: 
-    image: zulissi/ssh
+    image: zulissi/dev_ssh
     deploy: 
       placement: 
         constraints: 
