@@ -13,5 +13,9 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 
 USER zulissi
 
+RUN useradd -rm -d /home/zulissi -s /bin/bash -g root -G sudo -u 1001 zulissi
+USER zulissi
+WORKDIR /home/zulissi
+
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
