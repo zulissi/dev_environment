@@ -6,9 +6,10 @@ services:
       placement: 
         constraints: 
           - node.hostname == lambda-quad-3990-2080 # pick your computer
-      limits:
-        cpus: '4'
-        memory: 500M
+      resources:
+        limits:
+          cpus: '4'
+          memory: 500M
     volumes:
       - zulissi-home:/home/zulissi
     ports:
@@ -22,9 +23,10 @@ services:
       placement: 
         constraints: 
           - node.hostname == lambda-quad-3990-2080 # pick your computer
-      reservations:
-        cpus: '16'
-        memory: 8G
+      resources:
+        reservations:
+          cpus: '16'
+          memory: 8G
     volumes:
       - zulissi-home:/home/zulissi
     ports:
