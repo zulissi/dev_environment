@@ -4,6 +4,8 @@ services:
     image: zulissi/dev_ssh
     build:
       context: ./ssh
+      args: 
+        - username: zulissi
     deploy: 
       placement: 
         constraints: 
