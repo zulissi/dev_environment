@@ -6,7 +6,7 @@ RUN sudo apt update
 # install SSH server
 RUN sudo apt install openssh-server -y
 ADD start-ssh.sh /home/
-RUN ["chomd 0755 /home/start-ssh.sh"]
+RUN ["chmod 0755 /home/start-ssh.sh"]
 EXPOSE 22
 
 # install quantum espresso
