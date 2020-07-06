@@ -22,7 +22,7 @@ services:
   jupyter: 
     image: zulissi/gpu_jupyter_environment
     build:
-      context: ./gpu_jupyter
+      context: ./gpu-jupyter
     deploy: 
       placement: 
         constraints: 
