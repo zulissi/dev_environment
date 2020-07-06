@@ -31,3 +31,5 @@ services:
         mode: host
     restart: always
 
+volumes:
+  zulissi-home:
