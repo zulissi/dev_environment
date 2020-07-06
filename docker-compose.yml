@@ -6,7 +6,7 @@ services:
       placement: 
         constraints: 
           - node.hostname == lambda-quad-3990-2080 # pick your computer
-      limit:
+      limits:
         cpus: '4'
         memory: 500M
     volumes:
