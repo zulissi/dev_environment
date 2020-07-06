@@ -41,6 +41,8 @@ services:
         JUPYTER_ENABLE_LAB=yes
         NB_USER=zulissi
         NB_UID=1001
+     shm_size: 1G
+
 
 volumes:
   zulissi-home:
