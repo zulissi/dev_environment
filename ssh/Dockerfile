@@ -1,5 +1,5 @@
 FROM ubuntu:20.04
-ARG USERNAME
+ARG USERNAME=zulissi
 
 RUN apt-get update && apt-get install -y openssh-server 
 RUN apt-get install -y nano git vim build-essential curl wget
@@ -13,8 +13,8 @@ RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 
-RUN useradd -rm  -d /home/USERNAME -s /bin/bash -g root -G sudo -u 1001 $USERNAME
-RUN echo '$USERNAME:$USERNAME' | chpasswd
+RUN useradd -rm  -d /home/$USERNAME -s /bin/bash -g root -G sudo -u 1001 $USERNAME
+RUN echo $USERNAME:$USERNAME | chpasswd
 ADD authorized_keys /home/$USERNAME/authorized_keys
 
 EXPOSE 22
