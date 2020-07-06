@@ -1,11 +1,7 @@
 version: '3.7' 
 services: 
   ssh: 
-    image: zulissi/dev_ssh
-    build:
-      context: ./ssh
-      args: 
-        username: 'zulissi'
+    image: zulissi/dev_ssh # replace this with your repo
     deploy: 
       placement: 
         constraints: 
@@ -22,9 +18,7 @@ services:
         protocol: tcp
         mode: host
   jupyter: 
-    image: zulissi/gpu_jupyter_environment
-    build:
-      context: ./gpu-jupyter
+    image: zulissi/gpu_jupyter_environment # replace this with your repo
     deploy: 
       placement: 
         constraints: 
