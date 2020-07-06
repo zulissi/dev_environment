@@ -1,5 +1,5 @@
 FROM ubuntu:20.04
-ARG USERNAME
+ARG USERNAME=zulissi
 
 RUN apt-get update && apt-get install -y openssh-server 
 RUN apt-get install -y nano git vim build-essential curl wget
