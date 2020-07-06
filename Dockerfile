@@ -3,10 +3,13 @@ FROM cschranz/gpu-jupyter:latest
 USER root
 RUN sudo apt update
 
-# install SSH server
+# make a file to contain all the services we want to bring up
+RUN echo '#!/bin/bash' > /home/start-services.sh
+RUN chmod 0755 /home/start-services.sh
+
+# install SSH server, add it the list of services to bring up, and expose the port
 RUN sudo apt install openssh-server -y
-ADD start-ssh.sh /home/
-RUN ["chmod 0755 /home/start-ssh.sh"]
+RUN echo 'service ssh start' >> /home/start-services.sh
 EXPOSE 22
 
 # install quantum espresso
@@ -19,4 +22,4 @@ USER $NB_UID
 RUN conda config --set channel_priority flexible
 RUN conda install ase pymatgen asap3 -y
 
-CMD ["/home/start-ssh.sh","&&","start-notebook.sh"]
+CMD ["/home/start-services.sh","&&","start-notebook.sh"]
