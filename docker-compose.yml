@@ -1,0 +1,33 @@
+version: '3' 
+services: 
+  ssh: 
+    build:
+      context: ./ssh
+    deploy: 
+      placement: 
+        constraints: 
+          - node.hostname == lambda-quad-3990-2080
+    volumes:
+      - zulissi-home:/home/zulissi
+    ports:
+      - target: 22
+        published: 2222
+        protocol: tcp
+        mode: host
+    restart: always
+  jupyter: 
+    build:
+      context: ./gpu-jupyter
+    deploy: 
+      placement: 
+        constraints: 
+          - node.hostname == lambda-quad-3990-2080
+    volumes:
+      - zulissi-home:/home/zulissi
+    ports:
+      - target: 8888
+        published: 9888
+        protocol: tcp
+        mode: host
+    restart: always
+
