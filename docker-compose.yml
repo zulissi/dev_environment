@@ -39,6 +39,8 @@ services:
         NUMEXPR_NUM_THREADS=1
         MKL_DEBUG_CPU_TYPE=5
         JUPYTER_ENABLE_LAB=yes
+        NB_USER=zulissi
+        NB_UID=1001
 
 volumes:
   zulissi-home:
