@@ -18,7 +18,7 @@ services:
         protocol: tcp
         mode: host
   jupyter: 
-    image: zulissi/gpu_jupyter_environment # replace this with your repo
+    image: zulissi/dev_gpu_jupyter # replace this with your repo
     deploy: 
       placement: 
         constraints: 
