@@ -2,6 +2,8 @@ version: '3.7'
 services: 
   ssh: 
     image: zulissi/dev_ssh
+    build:
+      context ./ssh
     deploy: 
       placement: 
         constraints: 
@@ -19,6 +21,8 @@ services:
         mode: host
   jupyter: 
     image: zulissi/gpu_jupyter_environment
+    build:
+      context ./gpu_jupyter
     deploy: 
       placement: 
         constraints: 
