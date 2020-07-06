@@ -5,7 +5,7 @@ services:
     build:
       context: ./ssh
       args: 
-        - username: zulissi
+        - username: 'zulissi'
     deploy: 
       placement: 
         constraints: 
