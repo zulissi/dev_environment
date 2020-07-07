@@ -12,9 +12,9 @@ but you are welcome to try other things!
 3. make an account on docker hub https://hub.docker.com/
    * add a repository for each service you want
    * configure autobuild for each repository, pointing it to your github repo and correct folder
-4. edit docker-compose.yml (replace update each field that has a comment)
+4. edit docker-compose.yml (replace/update each field that has a comment)
 5. go to portainer, click on stacks. make a new stack using "git repository". point it to your github repo url. add a name and deploy
-6. go to portainer, find your ssh process, and connect to it as your username. run ssh-keygen to make the necessary files, then add your public key to ~/.ssh/authorized_keys to enable passwordless ssh
+6. go to portainer, find your ssh process, and connect to it as your username. run ssh-keygen to make the necessary files/folders/permissions, then add your public key to ~/.ssh/authorized_keys to enable passwordless ssh
     * if you're unsure what your public key is, make one with `ssh-keygen -t rsa -b 4096`, then copy the line in your `~/.ssh/id_rsa.pub` to authorized_keys
 
 # Access
