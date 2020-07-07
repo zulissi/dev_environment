@@ -11,14 +11,14 @@ but you are welcome to try other things!
    * edit the username ARG "zulissi" in ssh/Dockerfile to the one you want available when you login via ssh
 3. make an account on docker hub https://hub.docker.com/
    * add a repository for each service you want
-   * configure autobuild for each repository, pointing it to your github repo and correct folder
+   * configure autobuild for each repository, pointing it to your github repo and correct folder. wait for your builds to finish on docker hub
 4. edit docker-compose.yml (replace/update each field that has a comment)
-5. go to portainer, click on stacks. make a new stack using "git repository". point it to your github repo url. add a name and deploy
-6. go to portainer, find your ssh process, and connect to it as your username. run ssh-keygen to make the necessary files/folders/permissions, then add your public key to ~/.ssh/authorized_keys to enable passwordless ssh
+5. go to portainer, click on stacks. make a stack name, then copy docker-compose.yml into the web editor, then deploy!
+6. go to portainer, find your ssh process, and connect to it as your username ("console"). run ssh-keygen to make the necessary files/folders/permissions, then add your public key to ~/.ssh/authorized_keys to enable passwordless ssh
     * if you're unsure what your public key is, make one with `ssh-keygen -t rsa -b 4096`, then copy the line in your `~/.ssh/id_rsa.pub` to authorized_keys
 
 # Access
-That's it! You have a really fast jupyter notebook that should stay alive, and an ssh account. There are many services or things that you could run (fast shells with gpu access, etc).
+That's it! You have a really fast jupyter notebook that should stay alive, and an ssh account, and they both have access to /home/zulissi. There are many services or things that you could run (fast shells with gpu access, etc).
 * you will have a permanent ssh shell at zulissi.duckdns.org:yoursshport
 * you will have a jupyter server at yourusername.zulissi.duckdns.org:8888
 
