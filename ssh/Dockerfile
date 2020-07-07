@@ -13,7 +13,7 @@ RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 
-RUN useradd -rm  -d /home/$USERNAME -s /bin/bash -g root -G sudo -u 1001 $USERNAME
+RUN useradd -rm  -d /home/$USERNAME -s /bin/bash -g root -G sudo -u 1000 $USERNAME
 RUN echo $USERNAME:$USERNAME | chpasswd
 
 EXPOSE 22
