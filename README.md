@@ -1,7 +1,7 @@
 The ulissi group has a moderate docker swarm of desktops/gpus available for data science and ML development. This repo is an example of how you can use this docker swarm for daily development. It has two helpful services:
 * an ssh daemon that you can SSH into to use as a personal development environment
 * a GPU-enabled jupyter server with the standard ASE/pymatgen/etc packages
-but you are welecome to try other things!
+but you are welcome to try other things!
 
 # Setup instructions to use the docker swarm
 1. Ask zack to make an account for you at the portainer interface to the docker swarm
