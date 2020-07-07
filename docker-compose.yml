@@ -1,3 +1,4 @@
+  
 version: '3.7' 
 services: 
   ssh: 
@@ -6,43 +7,51 @@ services:
       placement: 
         constraints: 
           - node.hostname == lambda-quad-3990-2080 # pick your computer
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.zulissi_ssh.rule=Host(`zulissi.zulissi.duckdns.org`)"
+        - "traefik.http.routers.zulissi_ssh.entrypoints=ssh"
+        - "traefik.http.services.zulissi_ssh.loadbalancer.server.port=22"
       resources:
         limits:
           cpus: '4'
           memory: 500M
     volumes:
       - zulissi-home:/home/zulissi # replace zulissi with your volume
-    ports:
-      - target: 22
-        published: 2222 # pick your ssh port
-        protocol: tcp
-        mode: host
+    networks:
+      - traefik-public
+
   jupyter: 
     image: zulissi/dev_gpu_jupyter # replace this with your repo
     deploy: 
       placement: 
         constraints: 
           - node.hostname == lambda-quad-3990-2080 # pick your computer
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.zulissi_jupyter.rule=Host(`zulissi.zulissi.duckdns.org`)"
+        - "traefik.http.routers.zulissi_jupyter.entrypoints=jupyter"
+        - "traefik.http.services.zulissi_jupyter.loadbalancer.server.port=8888"
       resources:
         reservations:
           cpus: '16'
           memory: 8G
     volumes:
       - zulissi-home:/home/zulissi # replace zulissi with your volume
-    ports:
-      - target: 8888
-        published: 9888 # pick your jupyter port
-        protocol: tcp
-        mode: host
     environment:
         OMP_NUM_THREADS: 1
         NUMEXPR_NUM_THREADS: 1
         MKL_DEBUG_CPU_TYPE: 5
-        JUPYTER_ENABLE_LAB: yes
+        JUPYTER_ENABLE_LAB: 'yes'
         NB_USER: zulissi
         NB_UID: 1001
     shm_size: 1G
-
+    networks:
+      - traefik-public
 
 volumes:
   zulissi-home:
+  
+networks:
+  traefik-public:
+    external: true
