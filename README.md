@@ -13,7 +13,12 @@ but you are welcome to try other things!
    * configure autobuild for each repository, pointing it to your github repo and correct folder
 4. edit docker-compose.yml (replace update each field that has a comment)
 5. go to portainer, click on stacks. make a new stack using "git repository". point it to your github repo url. add a name and deploy
-6. go to portainer, find your ssh process, and connect to it. add your public key to ~/.ssh/authorized_keys to enable passwordless ssh
-    * if you're unsure what your public key is, make one with `ssh-keygen -t rsa -b 4096`, then copy the line in your `~/.ssh/id_rsa.pub`
+6. go to portainer, find your ssh process, and connect to it as your username. run ssh-keygen to make the necessary files, then add your public key to ~/.ssh/authorized_keys to enable passwordless ssh
+    * if you're unsure what your public key is, make one with `ssh-keygen -t rsa -b 4096`, then copy the line in your `~/.ssh/id_rsa.pub` to authorized_keys
 
+# Access
 That's it! You have a really fast jupyter notebook that should stay alive, and an ssh account. There are many services or things that you could run (fast shells with gpu access, etc).
+
+* you will have a permanent ssh shell at zulissi.duckdns.org:yoursshport
+* you will a jupyter server at yourusername.zulissi.duckdns.org:8888
+
