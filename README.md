@@ -6,7 +6,7 @@ but you are welcome to try other things!
 # Setup instructions to use the docker swarm
 1. Ask zack to make an account for you at the portainer interface to the docker swarm
 2. fork this repo https://github.com/zulissi/dev_environment 
-   * this represents the build configuration of your jupyter and ssh services
+   * this represents the build configuration of your jupyter and ssh services. you can change these (add packages to install etc)
    * edit the username ARG "zulissi" in ssh/Dockerfile to the one you want available when you login via ssh
 3. make an account on docker hub https://hub.docker.com/
    * add a repository for each service you want
@@ -18,7 +18,8 @@ but you are welcome to try other things!
 
 # Access
 That's it! You have a really fast jupyter notebook that should stay alive, and an ssh account. There are many services or things that you could run (fast shells with gpu access, etc).
-
 * you will have a permanent ssh shell at zulissi.duckdns.org:yoursshport
-* you will a jupyter server at yourusername.zulissi.duckdns.org:8888
+* you will have a jupyter server at yourusername.zulissi.duckdns.org:8888
 
+# Adding services
+You can add services by going to your stack, clicking editor, and deploying a new service. For example, 
