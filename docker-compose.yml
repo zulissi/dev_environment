@@ -18,8 +18,11 @@ services:
           memory: 500M
     volumes:
       - zulissi-home:/home/zulissi # replace zulissi with your volume
-    networks:
-      - traefik-public
+    ports:
+      - target: 22
+        published: 2222 # pick your ssh port
+        protocol: tcp
+        mode: host
 
   jupyter: 
     image: zulissi/dev_gpu_jupyter # replace this with your repo
@@ -29,7 +32,7 @@ services:
           - node.hostname == lambda-quad-3990-2080 # pick your computer
       labels:
         - "traefik.enable=true"
-        - "traefik.http.routers.zulissi_jupyter.rule=Host(`zulissi.zulissi.duckdns.org`)"
+        - "traefik.http.routers.zulissi_jupyter.rule=Host(`zulissi.zulissi.duckdns.org`)" # replace first zulissi with the subdomain you want
         - "traefik.http.routers.zulissi_jupyter.entrypoints=jupyter"
         - "traefik.http.services.zulissi_jupyter.loadbalancer.server.port=8888"
       resources:
@@ -39,13 +42,13 @@ services:
     volumes:
       - zulissi-home:/home/zulissi # replace zulissi with your volume
     environment:
-        OMP_NUM_THREADS: 1
-        NUMEXPR_NUM_THREADS: 1
-        MKL_DEBUG_CPU_TYPE: 5
-        JUPYTER_ENABLE_LAB: 'yes'
-        NB_USER: zulissi
+        OMP_NUM_THREADS: 1 # make sure we only use 1 thread/process
+        NUMEXPR_NUM_THREADS: 1 # make sure we only use 1 thread/process
+        MKL_DEBUG_CPU_TYPE: 5 # make random MKL calls faster on AMD cpus
+        JUPYTER_ENABLE_LAB: 'yes' # yes if you want jupyterlab
+        NB_USER: zulissi 
         NB_UID: 1001
-    shm_size: 1G
+    shm_size: 1G # this is helpful to increase for parallel workers in pytorch
     networks:
       - traefik-public
 
