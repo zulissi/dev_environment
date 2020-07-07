@@ -1,5 +1,3 @@
-# dev_environment
-
 The ulissi group has a moderate docker swarm of desktops/gpus available for data science and ML development. This repo is an example of how you can use this docker swarm for daily development. It has two helpful services:
 * an ssh daemon that you can SSH into to use as a personal development environment
 * a GPU-enabled jupyter server with the standard ASE/pymatgen/etc packages
