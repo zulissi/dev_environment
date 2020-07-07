@@ -6,7 +6,7 @@ but you are welcome to try other things!
 
 # Setup instructions to use the docker swarm
 1. Ask zack to make an account for you at the portainer interface to the docker swarm
-2. fork this repo https://github.com/zulissi/dev_environment 
+2. fork this repo https://github.com/zulissi/zulissi_docker_environment 
    * this represents the build configuration of your jupyter and ssh services. you can change these (add packages to install etc)
    * edit the username ARG "zulissi" in ssh/Dockerfile to the one you want available when you login via ssh
 3. make an account on docker hub https://hub.docker.com/
