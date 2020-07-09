@@ -17,7 +17,7 @@ services:
       - zulissi-home:/home/zulissi # replace zulissi with your volume
     ports:
       - target: 22
-        published: 2222 # pick your ssh port, tell zack (will work automatically when servers move to doherty)
+        published: 2222 # pick your ssh port
         protocol: tcp
         mode: host
 
