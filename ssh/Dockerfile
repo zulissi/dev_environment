@@ -17,4 +17,11 @@ RUN useradd -rm  -d /home/$USERNAME -s /bin/bash -g root -G sudo -u 1000 $USERNA
 RUN echo $USERNAME:$USERNAME | chpasswd
 
 EXPOSE 22
+
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+ENTRYPOINT ["runuser","-l","zulissi","/usr/local/bin/entrypoint.sh"]
+
 CMD ["/usr/sbin/sshd", "-D"]
+
