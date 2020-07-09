@@ -32,9 +32,9 @@ services:
           - node.hostname == lambda-quad-3990-2080 # pick your computer
       labels:
         - "traefik.enable=true"
-        - "traefik.http.routers.zulissi_jupyter.rule=Host(`zulissi.zulissi.duckdns.org`)" # replace first zulissi with the subdomain you want
-        - "traefik.http.routers.zulissi_jupyter.entrypoints=jupyter"
-        - "traefik.http.services.zulissi_jupyter.loadbalancer.server.port=8888"
+        - "traefik.http.routers.zulissi_jupyter.rule=Host(`zulissi.zulissi.duckdns.org`)" # replace first zulissi with the subdomain you want. change zulissi_jupyter to anything else
+        - "traefik.http.routers.zulissi_jupyter.entrypoints=jupyter" #change zulissi_jupyter to anything else
+        - "traefik.http.services.zulissi_jupyter.loadbalancer.server.port=8888" #change zulissi_jupyter to anything else
       resources:
         reservations:
           cpus: '16'
