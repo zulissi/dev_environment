@@ -9,9 +9,6 @@ services:
           - node.hostname == lambda-quad-3990-2080 # pick your computer
       labels:
         - "traefik.enable=true"
-        - "traefik.http.routers.zulissi_ssh.rule=Host(`zulissi.zulissi.duckdns.org`)"
-        - "traefik.http.routers.zulissi_ssh.entrypoints=ssh"
-        - "traefik.http.services.zulissi_ssh.loadbalancer.server.port=22"
       resources:
         limits:
           cpus: '4'
