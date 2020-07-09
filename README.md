@@ -6,16 +6,16 @@ but you are welcome to try other things!
 
 # Setup instructions to use the docker swarm
 1. Ask zack to make an account for you at the portainer interface to the docker swarm
-2. fork this repo https://github.com/zulissi/zulissi_docker_environment 
+2. Fork this repo https://github.com/zulissi/zulissi_docker_environment 
    * this represents the build configuration of your jupyter and ssh services. you can change these (add packages to install etc)
    * edit the username ARG "zulissi" in ssh/Dockerfile to the one you want available when you login via ssh
-3. make an account on docker hub https://hub.docker.com/
+3. Make an account on docker hub https://hub.docker.com/
    * add a repository for each service you want
    * configure autobuild for each repository, pointing it to your github repo and correct folder. wait for your builds to finish on docker hub
-4. edit docker-compose.yml (replace/update each field that has a comment)
-5. go to portainer, click on stacks. make a stack name, then copy docker-compose.yml into the web editor, then deploy!
-6. go to portainer, find your ssh process, and connect to it as your username ("console"). run ssh-keygen to make the necessary files/folders/permissions, then add your public key to ~/.ssh/authorized_keys to enable passwordless ssh
-    * if you're unsure what your public key is, make one with `ssh-keygen -t rsa -b 4096`, then copy the line in your `~/.ssh/id_rsa.pub` to authorized_keys
+4. Edit docker-compose.yml (replace/update each field that has a comment)
+5. Go to portainer, click on the main swarm, then click on stacks on the left hand side. Make a stack name, then copy docker-compose.yml into the web editor, then deploy!
+6. Go to portainer, find your ssh process, and connect to it as your username ("console" button on the status page for the container). run ssh-keygen to make the necessary files/folders/permissions, then add your public key to ~/.ssh/authorized_keys to enable passwordless ssh
+    * If you're unsure what your public key is, make one with `ssh-keygen -t rsa -b 4096`, then copy the line in your `~/.ssh/id_rsa.pub` to authorized_keys
 
 # Access
 That's it! You have a really fast jupyter notebook that should stay alive, and an ssh account, and they both have access to /home/zulissi. There are many services or things that you could run (fast shells with gpu access, etc).
