@@ -22,7 +22,7 @@ COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 COPY default_authorized_keys /usr/local/etc
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
-ENTRYPOINT ["runuser","-l","zulissi","/usr/local/bin/entrypoint.sh"]
+ENTRYPOINT ["runuser","-l","zulissi","/usr/local/bin/entrypoint.sh;"]
 
 CMD ["/usr/sbin/sshd", "-D"]
 
