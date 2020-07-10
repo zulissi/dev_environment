@@ -31,6 +31,7 @@ services:
       - zulissi-home:/home/zulissi # replace zulissi with your volume
     ports:
       - target: 8888
+        published: 8988
         protocol: tcp
         mode: host
     environment:
