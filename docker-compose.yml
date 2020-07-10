@@ -1,4 +1,3 @@
-  
 version: '3.7' 
 services: 
   ssh: 
@@ -7,8 +6,6 @@ services:
       placement: 
         constraints: 
           - node.hostname == lambda-quad-3990-2080 # pick your computer
-      labels:
-        - "traefik.enable=true"
       resources:
         limits:
           cpus: '4'
@@ -20,24 +17,22 @@ services:
         published: 2222 # pick your ssh port
         protocol: tcp
         mode: host
-
   jupyter: 
     image: zulissi/dev_gpu_jupyter # replace this with your repo
     deploy: 
       placement: 
         constraints: 
           - node.hostname == lambda-quad-3990-2080 # pick your computer
-      labels:
-        - "traefik.enable=true"
-        - "traefik.http.routers.zulissi_jupyter.rule=Host(`zulissi.zulissi.duckdns.org`)" # replace first zulissi with the subdomain you want. change zulissi_jupyter to anything else
-        - "traefik.http.routers.zulissi_jupyter.entrypoints=jupyter" #change zulissi_jupyter to anything else
-        - "traefik.http.services.zulissi_jupyter.loadbalancer.server.port=8888" #change zulissi_jupyter to anything else
       resources:
         reservations:
           cpus: '16'
           memory: 8G
     volumes:
       - zulissi-home:/home/zulissi # replace zulissi with your volume
+    ports:
+      - target: 8888
+        protocol: tcp
+        mode: host
     environment:
         OMP_NUM_THREADS: 1 # make sure we only use 1 thread/process
         NUMEXPR_NUM_THREADS: 1 # make sure we only use 1 thread/process
@@ -46,12 +41,7 @@ services:
         NB_USER: zulissi 
         NB_UID: 1001
     shm_size: 1G # this is helpful to increase for parallel workers in pytorch
-    networks:
-      - traefik-public
 
 volumes:
   zulissi-home:
   
-networks:
-  traefik-public:
-    external: true
