@@ -1,4 +1,4 @@
-#!su zulissi /bin/bash
+#!/bin/bash
 
 if [ ! -d "~/.ssh/" ] 
 then 
